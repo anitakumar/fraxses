@@ -14,7 +14,7 @@ In a cluster environment it should create master and slave. The slave would be y
 This will  make it highly available. if a pod dies you have other replicas which make it highly available
 In a cluster you can scale replicas.
 
-If a node dies in couchdb database there is a recovery pattern in kubernetes that will spin up a new node
+If a node dies in couchdb database there is a recovery pattern in kubernetes that will spin up a new node via vertical autoscaling
 
 Latency: The more replicas then your latency will be reduced
 
