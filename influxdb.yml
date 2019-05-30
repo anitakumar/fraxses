@@ -1,0 +1,21 @@
+---
+- name: installinfluxdb
+  hosts: influxdb-server
+  become: true
+  become_user: root
+  gather_facts: true
+  tasks:
+- name: Import InfluxDB GPG signing key
+  apt_key: url=https://repos.influxdata.com/influxdb.key state=present
+- name: Import InfluxDB GPG signing key
+  apt_key: url=https://repos.influxdata.com/influxdb.key state=present
+- name: Install InfluxDB packages
+  apt: name=influxdb state=present
+- name: Modify InfluxDB hostname
+  replace:
+    dest=/etc/opt/influxdb/influxdb.conf
+    regexp='hostname = "localhost"'
+    replace='hostname = "database1.internal.fraxses.com"'
+    backup=yes
+- name: Start the InfluxDB service
+  service: name=influxdb state=restarted

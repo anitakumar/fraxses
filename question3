@@ -1,0 +1,21 @@
+I have never created database in k8s. However there are ways it can be
+create statefull sets will allow you to have a database in a cluster.
+This will run a pod on one specific node
+Secrets- store your Secrets
+configMaps- store environment config
+
+For storage if your pod is deleted data will still be  so this is done as follows
+NFS provionsner
+service accounts and role and role bindings, service  to access storage
+Storage classes
+pvc/pv - persistant volumes
+
+In a cluster environment it should create master and slave. The slave would be your replica of the master
+This will  make it highly available. if a pod dies you have other replicas which make it highly available
+In a cluster you can scale replicas.
+
+If a node dies in couchdb database there is a recovery pattern in kubernetes that will spin up a new node
+
+Latency: The more replicas then your latency will be reduced
+
+use readiness probe to check that the influxdb is accessible
